@@ -1,0 +1,2 @@
+192.168.100.9 - - [18/Feb/2019:05:23:52 +0000] "GET /test HTTP/1.1" 200 76 "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36"
+192.168.100.9 - - [18/Feb/2019:05:24:33 +0000] "GET /favicon.ico HTTP/1.1" 404 326 "http://192.168.100.9:17178/test" "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36"

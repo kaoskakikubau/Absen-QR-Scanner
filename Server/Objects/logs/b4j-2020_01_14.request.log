@@ -1,0 +1,8 @@
+192.168.43.32 - - [14/Jan/2020:04:28:25 +0000] "GET /test HTTP/1.1" 200 72 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+192.168.43.32 - - [14/Jan/2020:04:28:25 +0000] "GET /favicon.ico HTTP/1.1" 404 326 "http://192.168.43.32:17178/test" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+192.168.43.32 - - [14/Jan/2020:04:28:26 +0000] "GET /favicon.ico HTTP/1.1" 404 326 "http://192.168.43.32:17178/test" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
+192.168.43.129 - - [14/Jan/2020:06:02:39 +0000] "POST /rdc?method=query2 HTTP/1.1" 200 384 "-" "okhttp/3.5.0"
+192.168.43.129 - - [14/Jan/2020:06:03:44 +0000] "POST /rdc?method=query2 HTTP/1.1" 200 155 "-" "okhttp/3.5.0"
+192.168.43.129 - - [14/Jan/2020:06:03:44 +0000] "POST /rdc?method=batch2 HTTP/1.1" 200 120 "-" "okhttp/3.5.0"
+192.168.43.129 - - [14/Jan/2020:06:04:47 +0000] "POST /rdc?method=query2 HTTP/1.1" 200 155 "-" "okhttp/3.5.0"
+192.168.43.129 - - [14/Jan/2020:06:04:47 +0000] "POST /rdc?method=batch2 HTTP/1.1" 200 120 "-" "okhttp/3.5.0"

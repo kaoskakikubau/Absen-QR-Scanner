@@ -1,0 +1,284 @@
+
+-login dosen
+SELECT * FROM tbl_dosen WHERE nip = txtfieldNIP
+nip = row(2)
+nama = row(1)
+
+-tampilin pilihan kelas di spinner
+SELECT kelas FROM tbl_kelas,
+Tampilin nama siswa = SELECT nama FROM tbl_mhs WHERE kelas = (yg di spinner)
+
+-tampilin pilihan matkul di spiner
+SELECT matkul FROM tbl_matkul WHERE nip = (Nip ter login)
+
+create table tbl_mhs(npm varchar(8), nama varchar(30), kelas varchar(10), string_qr varchar(20), foreign key(kelas) references tbl_kelas(kelas));
+
+
+
+Setting environment for using XAMPP for Windows.
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+# mysql-uroot -p
+'mysql-uroot' is not recognized as an internal or external command,
+operable program or batch file.
+
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.38-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database absen
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> use absen
+Database changed
+MariaDB [absen]> CREATE TABLE tbl_dosen(id INT(11) auto increment, nip varchar(11) primary key, nama varchar(30));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'auto increment, nip varchar(11) primary key, nama varchar(30))' at line 1
+MariaDB [absen]> CREATE TABLE tbl_dosen(id INT(11) auto_increment, nip varchar(11) primary key, nama varchar(30));
+ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key
+MariaDB [absen]> CREATE TABLE tbl_dosen(nip varchar(11) primary key, nama varchar(30));
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [absen]> CREATE TABLE tbl_mhs(npm varchar(8) primary key, nama varchar(30),jurusan varchar(30), kelas varchar(5), status varchar(15), string_qr(15), email(30) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(15), email(30) )' at line 1
+MariaDB [absen]> CREATE TABLE tbl_mhs(npm varchar(8) primary key, nama varchar(30),jurusan varchar(30), kelas varchar(5), status varchar(15), string_qr varchar(15), email varchar(30) );
+Query OK, 0 rows affected (0.08 sec)
+
+MariaDB [absen]> create table tbl_matkul(matkul varchar(20), nip varchar(15), foreignkey nip references tbl_dosen(NIP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'nip references tbl_dosen(NIP))' at line 1
+MariaDB [absen]> create table tbl_matkul(matkul varchar(20), nip varchar(15), foreignkey (nip) references tbl_dosen(NIP));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(nip) references tbl_dosen(NIP))' at line 1
+MariaDB [absen]> create table tbl_matkul(matkul varchar(20), nip varchar(15), foreignkey (nip) references tbl_dosen(nip));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(nip) references tbl_dosen(nip))' at line 1
+MariaDB [absen]> create table tbl_matkul(matkul varchar(20), nip varchar(15), foreign key (nip) references tbl_dosen(nip));
+Query OK, 0 rows affected (0.04 sec)
+
+MariaDB [absen]> create table tbl_kelas(kelas varchar(20), walas varchar(15));
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [absen]> create table tbl_mhs(npm varchar(8), nama varchar(30), kelas varchar(10), string_qr varchar(20), foreign key(kelas) references tbl_kelas(kelas));
+ERROR 1005 (HY000): Can't create table `absen`.`tbl_mhs` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [absen]> create table tbl_mhs(npm varchar(8), nama varchar(30), kelas varchar(20), string_qr varchar(20), foreign key(kelas) references tbl_kelas(kelas));
+ERROR 1005 (HY000): Can't create table `absen`.`tbl_mhs` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [absen]> create table tbl_mhs(npm varchar(8), nama varchar(30), kelas varchar(10), string_qr varchar(20), foreign key(kelas) references tbl_kelas(kelas));
+Query OK, 0 rows affected (0.04 sec)
+
+MariaDB [absen]> select* from tbl_mhs where kelas= '3ia19';
++----------+------+-------+------------+
+| npm      | nama | kelas | string_qr  |
++----------+------+-------+------------+
+| 54417857 | rafi | 3ia19 | dsafasfafa |
++----------+------+-------+------------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> Bye
+
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+#
+
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 435
+Server version: 10.1.38-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use absen
+Database changed
+MariaDB [absen]> select kelas where tbl_kelas;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'where tbl_kelas' at line 1
+MariaDB [absen]> select kelas from tbl_kelas;
++-------+
+| kelas |
++-------+
+| 3ia18 |
+| 3ia19 |
++-------+
+2 rows in set (0.00 sec)
+
+MariaDB [absen]> desc tbl_kelas
+    -> ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| kelas | varchar(20) | NO   | PRI | NULL    |       |
+| walas | varchar(15) | YES  | MUL | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.03 sec)
+
+MariaDB [absen]> select * from tbl_kelas;
++-------+-------------+
+| kelas | walas       |
++-------+-------------+
+| 3ia18 | 12345678910 |
+| 3ia19 | 12345678910 |
++-------+-------------+
+2 rows in set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_kelas where kelas="3ia18";
++-------+-------------+
+| kelas | walas       |
++-------+-------------+
+| 3ia18 | 12345678910 |
++-------+-------------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> disc
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'disc' at line 1
+MariaDB [absen]> disc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'disc' at line 1
+MariaDB [absen]> disc tbl_mhs;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'disc tbl_mhs' at line 1
+MariaDB [absen]> desc tbl_mhs;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| npm       | varchar(8)  | YES  |     | NULL    |       |
+| nama      | varchar(30) | YES  |     | NULL    |       |
+| kelas     | varchar(10) | YES  | MUL | NULL    |       |
+| string_qr | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+MariaDB [absen]> Bye
+
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+#
+
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+# mysql -u root -p;
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+Gundar@DESKTOP-3ILSK4A c:\xamppasli
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 465
+Server version: 10.1.38-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use absen
+Database changed
+MariaDB [absen]> select matkul from tbl_matkul where nip = "12345678910";
++---------+
+| matkul  |
++---------+
+| Grafkom |
++---------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> select matkul from tbl_matkul where nip = "12345678910";
++------------+
+| matkul     |
++------------+
+| Grafkom    |
+| Sosiografi |
++------------+
+2 rows in set (0.00 sec)
+
+MariaDB [absen]> create table absens(tanggal datetime, npm varchar(8), status varchar(10) foreign key(npm) references tbl_mhs(npm));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'foreign key(npm) references tbl_mhs(npm))' at line 1
+MariaDB [absen]> create table absens(tanggal datetime, npm varchar(8), status varchar(10) ,foreign key(npm) references tbl_mhs(npm));
+ERROR 1005 (HY000): Can't create table `absen`.`absens` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [absen]> create table absens(idint(11) primary key,tanggal datetime, npm varchar(8), status varchar(10) ,foreign key(npm) references tbl_mhs(npm));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(11) primary key,tanggal datetime, npm varchar(8), status varchar(10) ,foreign k' at line 1
+MariaDB [absen]> create table absens(id int(11) primary key,tanggal datetime, npm varchar(8), status varchar(10) ,foreign key(npm) references tbl_mhs(npm));
+ERROR 1005 (HY000): Can't create table `absen`.`absens` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [absen]> create table absens(id int(11) primary key,tanggal datetime, npm varchar(8), status varchar(10) ,foreign key(npm) references tbl_mhs(npm));
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [absen]> insert into absens values('2019/08/09', '54417857', 'masuk');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [absen]> insert into absens values(2019/08/09, '54417857', 'masuk');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+MariaDB [absen]> create table absens(id int(11) primary key,tanggal date, npm varchar(8),matkul varchar(10), status varchar(10) ,foreign key(npm) references tbl_mhs(npm), foreign key(matkul) references tbl_matkul(matkul));
+ERROR 1005 (HY000): Can't create table `absen`.`absens` (errno: 150 "Foreign key constraint is incorrectly formed")
+MariaDB [absen]> create table absens(id int(11) primary key,tanggal date, npm varchar(8),matkul varchar(10), status varchar(10) ,foreign key(npm) references tbl_mhs(npm), foreign key(matkul) references tbl_matkul(matkul));
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [absen]> select * from absens where npm='54417857';
++----+------------+----------+---------+--------+
+| id | tanggal    | npm      | matkul  | status |
++----+------------+----------+---------+--------+
+|  1 | 2020-02-18 | 54417857 | Grafkom | masuk  |
++----+------------+----------+---------+--------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> select count(*) from absens where npm='54417857';
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_matkul where matkul = absens.matkul;
+ERROR 1054 (42S22): Unknown column 'absens.matkul' in 'where clause'
+MariaDB [absen]> select * from tbl_matkul where tbl_matkul. matkul = absens.matkul;
+ERROR 1054 (42S22): Unknown column 'absens.matkul' in 'where clause'
+MariaDB [absen]> select * from tbl_matkul, absens where tbl_matkul. matkul = absens.matkul;
++---------+-------------+----+------------+----------+---------+--------+
+| matkul  | nip         | id | tanggal    | npm      | matkul  | status |
++---------+-------------+----+------------+----------+---------+--------+
+| Grafkom | 12345678910 |  1 | 2020-02-18 | 54417857 | Grafkom | masuk  |
++---------+-------------+----+------------+----------+---------+--------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_matkul, absens where tbl_matkul. matkul = absens.matkul;
++---------+-------------+----+------------+----------+---------+--------+
+| matkul  | nip         | id | tanggal    | npm      | matkul  | status |
++---------+-------------+----+------------+----------+---------+--------+
+| Grafkom | 12345678910 |  1 | 2020-02-18 | 54417857 | Grafkom | masuk  |
++---------+-------------+----+------------+----------+---------+--------+
+1 row in set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_matkul, absens, tbl_dosen where tbl_dosen. nip = tbl_matkul.nip;
++------------+-------------+----+------------+----------+---------+--------+-------------+------+
+| matkul     | nip         | id | tanggal    | npm      | matkul  | status | nip         | nama |
++------------+-------------+----+------------+----------+---------+--------+-------------+------+
+| Grafkom    | 12345678910 |  1 | 2020-02-18 | 54417857 | Grafkom | masuk  | 12345678910 | arbi |
+| Sosiografi | 12345678910 |  1 | 2020-02-18 | 54417857 | Grafkom | masuk  | 12345678910 | arbi |
++------------+-------------+----+------------+----------+---------+--------+-------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_matkul, tbl_dosen where tbl_dosen. nip = tbl_matkul.nip;
++------------+-------------+-------------+------+
+| matkul     | nip         | nip         | nama |
++------------+-------------+-------------+------+
+| Grafkom    | 12345678910 | 12345678910 | arbi |
+| Sosiografi | 12345678910 | 12345678910 | arbi |
++------------+-------------+-------------+------+
+2 rows in set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_matkul, tbl_dosen, absens where tbl_dosen. nip = tbl_matkul.nip AND absens.npm = '54417857; ;
+    '> ;
+    '>
+    '> '
+    ->
+    -> ;
+Empty set (0.00 sec)
+
+MariaDB [absen]> select * from tbl_matkul, tbl_dosen, absens where tbl_dosen. nip = tbl_matkul.nip AND absens.npm = '54417857' ;
++------------+-------------+-------------+------+----+------------+----------+---------+--------+
+| matkul     | nip         | nip         | nama | id | tanggal    | npm      | matkul  | status |
++------------+-------------+-------------+------+----+------------+----------+---------+--------+
+| Grafkom    | 12345678910 | 12345678910 | arbi |  1 | 2020-02-18 | 54417857 | Grafkom | masuk  |
+| Sosiografi | 12345678910 | 12345678910 | arbi |  1 | 2020-02-18 | 54417857 | Grafkom | masuk  |
++------------+-------------+-------------+------+----+------------+----------+---------+--------+
+2 rows in set (0.00 sec)
+
+MariaDB [absen]>

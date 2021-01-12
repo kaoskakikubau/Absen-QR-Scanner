@@ -1,0 +1,5 @@
+192.168.1.6 - - [18/Dec/2019:14:14:41 +0000] "GET /test HTTP/1.1" 200 72 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+192.168.1.6 - - [18/Dec/2019:14:22:15 +0000] "GET /test HTTP/1.1" 200 72 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+192.168.1.2 - - [18/Dec/2019:15:24:23 +0000] "POST /rdc?method=batch2 HTTP/1.1" 200 120 "-" "okhttp/3.5.0"
+192.168.1.2 - - [18/Dec/2019:15:38:51 +0000] "POST /rdc?method=batch2 HTTP/1.1" 200 120 "-" "okhttp/3.5.0"
+192.168.1.2 - - [18/Dec/2019:16:02:29 +0000] "POST /rdc?method=batch2 HTTP/1.1" 200 120 "-" "okhttp/3.5.0"
